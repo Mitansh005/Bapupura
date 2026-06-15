@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FDF6EC;
+  --foreground: #1A0F05;
 }
 
 @theme inline {
+  --font-sans: var(--font-inter);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes liveP {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* Slow, heartbeat-like breath for the OM — 5.5s reverent cycle */
+@keyframes omBreath {
+  0%, 100% {
+    opacity: 0.82;
+    transform: scale(1);
+    filter: drop-shadow(0 0 18px rgba(200,146,42,0.22));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.035);
+    filter: drop-shadow(0 0 46px rgba(200,146,42,0.5));
+  }
+}
+
+/* Faint embers drifting upward in the dusk */
+@keyframes emberFloat {
+  0%   { transform: translateY(0) scale(1);   opacity: 0; }
+  15%  { opacity: 0.7; }
+  85%  { opacity: 0.5; }
+  100% { transform: translateY(-70px) scale(0.6); opacity: 0; }
+}
+
+/* Mist layers drifting slowly sideways */
+@keyframes mistDrift {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50%       { transform: translateX(4%) translateY(-2%); }
+}
+
+/* Aura ring pulse around sacred elements (Live Darshan, etc.) */
+@keyframes auraPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 0.7;  transform: scale(1.04); }
+}
+
+/* Scroll-reveal: sections rise and settle into place — reverent, not bouncy */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 600ms cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 600ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
 }

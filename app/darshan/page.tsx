@@ -1,0 +1,78 @@
+'use client';
+
+import { useLang } from '@/app/context/lang';
+import { T } from '@/app/lib/translations';
+import { C, F } from '@/app/lib/theme';
+
+export default function DarshanPage() {
+  const { lang } = useLang();
+  const isGu = lang === 'gu';
+  const t = T[lang].darshan;
+
+  const timings = [
+    { l: t.t1l, v: t.t1v, n: t.t1n },
+    { l: t.t2l, v: t.t2v, n: t.t2n },
+    { l: t.t3l, v: t.t3v, n: t.t3n },
+    { l: t.t4l, v: t.t4v, n: t.t4n },
+  ];
+
+  return (
+    <div style={{ paddingTop: 64, background: C.bg, minHeight: '100svh' }}>
+      <section style={{ padding: '48px 28px', background: C.white }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+
+          {/* Live badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(212,43,43,0.07)', border: '1px solid rgba(212,43,43,0.2)', padding: '3px 12px', marginBottom: 14 }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#D42B2B', display: 'inline-block', animation: 'liveP 1.5s infinite' }} />
+            <span style={{ fontSize: 9, color: '#D42B2B', letterSpacing: 2, textTransform: 'uppercase', fontWeight: 600, fontFamily: F.inter }}>
+              {t.eye}
+            </span>
+          </div>
+
+          <h1 style={{
+            fontFamily: isGu ? F.gujarati : F.cormorant,
+            fontSize: isGu ? 'clamp(1.4rem,4vw,2rem)' : 'clamp(1.6rem,4vw,2.4rem)',
+            fontWeight: isGu ? 700 : 600,
+            color: C.maroon,
+            marginBottom: 6,
+          }}>
+            {t.title}
+          </h1>
+          <p style={{ fontSize: 12, color: C.tx2, marginBottom: 24, fontFamily: isGu ? F.gujarati : F.inter }}>
+            {t.sub}
+          </p>
+
+          {/* YouTube embed */}
+          <div style={{ border: `1px solid ${C.bd}`, overflow: 'hidden' }}>
+            <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
+              <iframe
+                src="https://www.youtube.com/embed/GrZmqQBPHxE?rel=0"
+                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
+              />
+            </div>
+            <div style={{ background: C.maroon, padding: '10px 16px' }}>
+              <div style={{ fontSize: 11, color: '#fff', fontFamily: isGu ? F.gujarati : F.inter }}>{t.camLabel}</div>
+              <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, fontFamily: F.inter }}>{t.camSub}</div>
+            </div>
+          </div>
+
+          {/* Timings */}
+          <h3 style={{ fontFamily: F.cormorant, fontSize: 20, color: C.maroon, margin: '28px 0 14px' }}>
+            {t.infoTitle}
+          </h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 1, background: C.bd }}>
+            {timings.map(({ l, v, n }) => (
+              <div key={l} style={{ background: C.bg2, padding: '14px 16px' }}>
+                <div style={{ fontSize: 8, color: C.sf, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 4, fontWeight: 600, fontFamily: F.inter }}>{l}</div>
+                <div style={{ fontFamily: F.cormorant, fontSize: 16, color: C.maroon, fontWeight: 700 }}>{v}</div>
+                <div style={{ fontSize: 9, color: C.tx3, marginTop: 2, fontFamily: isGu ? F.gujarati : F.inter }}>{n}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
