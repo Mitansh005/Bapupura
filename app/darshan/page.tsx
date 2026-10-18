@@ -46,7 +46,7 @@ export default function DarshanPage() {
           <div style={{ border: `1px solid ${C.bd}`, overflow: 'hidden' }}>
             <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
               <iframe
-                src="https://www.youtube.com/embed/GrZmqQBPHxE?rel=0"
+                src="https://www.youtube.com/embed/I98t5BgGt2k?rel=0"
                 title={t.title}
                 allowFullScreen
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
