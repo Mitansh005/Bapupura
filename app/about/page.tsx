@@ -1,9 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
 import { C, F } from '@/app/lib/theme';
 import { SectionHeader } from '@/app/components/SectionHeader';
+import { Divider } from '@/app/components/Divider';
+import { EventSchedule } from '@/app/components/EventSchedule';
 
 export default function AboutPage() {
   const { lang } = useLang();
@@ -29,7 +32,18 @@ export default function AboutPage() {
           </div>
 
           {/* Description block 2 */}
-          <p style={{ fontSize: 13, color: C.tx2, lineHeight: 1.9, marginBottom: 32, fontFamily: isGu ? F.gujarati : F.inter }}>{t.d2}</p>
+          <p style={{ fontSize: 13, color: C.tx2, lineHeight: 1.9, marginBottom: 24, fontFamily: isGu ? F.gujarati : F.inter }}>{t.d2}</p>
+
+          {/* Temple entrance photograph */}
+          <div className="card-lift" style={{ position: 'relative', width: '100%', aspectRatio: '16 / 10', border: `1px solid ${C.bd}`, overflow: 'hidden', marginBottom: 32 }}>
+            <Image
+              src="/images/temple-entrance.jpg"
+              alt="Entrance of Shree Nilkanth Mahadev Mandir, Bapupura"
+              fill
+              sizes="(max-width: 832px) 100vw, 800px"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
 
           {/* Committee card */}
           <div style={{ border: `1px solid ${C.bd}`, overflow: 'hidden' }}>
@@ -61,8 +75,24 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+
+          {/* Second temple photograph */}
+          <div className="card-lift" style={{ position: 'relative', width: '100%', aspectRatio: '16 / 10', border: `1px solid ${C.bd}`, overflow: 'hidden', marginTop: 32 }}>
+            <Image
+              src="/images/temple-entrance-2.jpg"
+              alt="Shree Nilkanth Mahadev Mandir temple grounds, Bapupura"
+              fill
+              sizes="(max-width: 832px) 100vw, 800px"
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
         </div>
       </section>
+
+      <Divider />
+
+      {/* ── Event Schedule (Katha + Night Program) ── */}
+      <EventSchedule />
     </div>
   );
 }

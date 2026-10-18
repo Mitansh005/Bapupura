@@ -39,10 +39,10 @@ export function Navbar() {
           <span style={{ fontFamily: 'serif', fontSize: '1.6rem', color: C.maroon, lineHeight: 1 }}>ॐ</span>
           <div>
             <div style={{ fontFamily: isGu ? F.gujarati : F.cormorant, fontSize: '1.05rem', fontWeight: 700, color: C.maroon, lineHeight: 1.1 }}>
-              {isGu ? 'બાપુપૂરા' : 'Bapupura'}
+              {isGu ? 'બાપુપુરા' : 'Bapupura'}
             </div>
             <div style={{ fontSize: '0.58rem', color: C.tx3, letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: F.inter }}>
-              Ta-Mansa · Gandhinagar
+              {isGu ? 'તા-માણસા · ગાંધીનગર' : 'Ta-Mansa · Gandhinagar'}
             </div>
           </div>
         </Link>

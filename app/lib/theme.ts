@@ -33,7 +33,7 @@ export const D = {
 } as const;
 
 export const F = {
-  cormorant: 'var(--font-cormorant), serif',
+  cormorant: 'var(--font-cormorant), var(--font-gujarati), serif',
   gujarati: 'var(--font-gujarati), sans-serif',
-  inter: 'var(--font-inter), sans-serif',
+  inter: 'var(--font-inter), var(--font-gujarati), sans-serif',
 } as const;

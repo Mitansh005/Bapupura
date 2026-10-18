@@ -49,6 +49,9 @@ export function Footer() {
       <p style={{ fontSize: 8, color: 'rgba(255,255,255,0.3)', letterSpacing: 2, textTransform: 'uppercase', fontFamily: F.inter }}>
         {t.organizer} · {new Date().getFullYear()}
       </p>
+      <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.3)', fontFamily: F.inter, marginTop: 10 }}>
+        Made with ❤️ for Bapupura by Mitansh Chaudhari
+      </p>
     </footer>
   );
 }

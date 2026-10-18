@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
 import { C, F } from '@/app/lib/theme';
@@ -10,7 +11,6 @@ export default function DarshanPage() {
   const t = T[lang].darshan;
 
   const timings = [
-    { l: t.t1l, v: t.t1v, n: t.t1n },
     { l: t.t2l, v: t.t2v, n: t.t2n },
     { l: t.t3l, v: t.t3v, n: t.t3n },
     { l: t.t4l, v: t.t4v, n: t.t4n },
@@ -47,6 +47,7 @@ export default function DarshanPage() {
             <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
               <iframe
                 src="https://www.youtube.com/embed/GrZmqQBPHxE?rel=0"
+                title={t.title}
                 allowFullScreen
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
@@ -56,6 +57,17 @@ export default function DarshanPage() {
               <div style={{ fontSize: 11, color: '#fff', fontFamily: isGu ? F.gujarati : F.inter }}>{t.camLabel}</div>
               <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, fontFamily: F.inter }}>{t.camSub}</div>
             </div>
+          </div>
+
+          {/* Shivling darshan photograph */}
+          <div className="card-lift" style={{ position: 'relative', width: '100%', aspectRatio: '16 / 10', border: `1px solid ${C.bd}`, overflow: 'hidden', marginTop: 16 }}>
+            <Image
+              src="/images/shivling-flowers.jpg"
+              alt="Shivling at Shree Nilkanth Mahadev adorned with flowers"
+              fill
+              sizes="(max-width: 932px) 100vw, 900px"
+              style={{ objectFit: 'cover' }}
+            />
           </div>
 
           {/* Timings */}

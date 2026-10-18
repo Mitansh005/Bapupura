@@ -3,8 +3,8 @@
 import { useState, useRef, type FormEvent } from 'react';
 import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
-import { ALBUMS } from '@/app/lib/albums';
 import { supabase } from '@/app/lib/supabase';
+import { ALBUMS } from '@/app/lib/albums';
 import { C, F } from '@/app/lib/theme';
 import { SectionHeader } from '@/app/components/SectionHeader';
 
@@ -29,8 +29,6 @@ export default function UploadPage() {
   const guStyle = isGu ? { fontFamily: F.gujarati, fontSize: '0.9rem' } : {};
 
   const [name,       setName]       = useState('');
-  const [phone,      setPhone]      = useState('');
-  const [album,      setAlbum]      = useState('');
   const [caption,    setCaption]    = useState('');
   const [files,      setFiles]      = useState<File[]>([]);
   const [drag,       setDrag]       = useState(false);
@@ -39,13 +37,27 @@ export default function UploadPage() {
   const [error,      setError]      = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
+  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+  const EXT_FROM_MIME: Record<string, string> = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+
   const addFiles = (incoming: FileList | null) => {
     if (!incoming) return;
-    const valid = Array.from(incoming).filter(f => f.size <= 10 * 1024 * 1024);
+    const all = Array.from(incoming);
+    const badType = all.filter(f => !ALLOWED_TYPES.includes(f.type));
+    const badSize = all.filter(f => ALLOWED_TYPES.includes(f.type) && f.size > 10 * 1024 * 1024);
+    if (badType.length > 0 || badSize.length > 0) {
+      const msgs: string[] = [];
+      if (badType.length > 0) msgs.push(t.errType(badType.length));
+      if (badSize.length > 0) msgs.push(t.errSize(badSize.length));
+      setError(msgs.join(' '));
+    } else {
+      setError(null);
+    }
+    const valid = all.filter(f => ALLOWED_TYPES.includes(f.type) && f.size <= 10 * 1024 * 1024);
     setFiles(prev => [...prev, ...valid]);
   };
 
-  const reset = () => { setName(''); setPhone(''); setAlbum(''); setCaption(''); setFiles([]); setSubmitted(false); setError(null); };
+  const reset = () => { setName(''); setCaption(''); setFiles([]); setSubmitted(false); setError(null); };
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -54,9 +66,9 @@ export default function UploadPage() {
     setError(null);
 
     try {
-      const eventId = Number(album) || 1;
+      const eventId = ALBUMS[0].id;
       for (const file of files) {
-        const ext = file.name.split('.').pop() ?? 'jpg';
+        const ext = EXT_FROM_MIME[file.type] ?? 'jpg';
         const path = `${eventId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
 
         const { error: uploadErr } = await supabase.storage.from('photos').upload(path, file);
@@ -68,6 +80,7 @@ export default function UploadPage() {
           event_id: eventId,
           image_url: publicUrl,
           uploaded_by: name.trim(),
+          caption: caption.trim() || null,
           approved: false,
         });
         if (dbErr) throw dbErr;
@@ -75,7 +88,7 @@ export default function UploadPage() {
       setSubmitted(true);
     } catch (err) {
       console.error(err);
-      setError('Upload failed. Please check your connection and try again.');
+      setError(t.errFail);
     } finally {
       setSubmitting(false);
     }
@@ -108,31 +121,14 @@ export default function UploadPage() {
 
               {/* Name */}
               <div>
-                <label style={lbl}>{t.nameL}</label>
-                <input required value={name} onChange={e => setName(e.target.value)} placeholder={t.nameP} style={{ ...inp, ...guStyle }} onFocus={onFocus} onBlur={onBlur} />
-              </div>
-
-              {/* Phone */}
-              <div>
-                <label style={lbl}>{t.phoneL}</label>
-                <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder={t.phoneP} style={{ ...inp, ...guStyle }} onFocus={onFocus} onBlur={onBlur} />
-              </div>
-
-              {/* Album select */}
-              <div>
-                <label style={lbl}>{t.albumL}</label>
-                <select value={album} onChange={e => setAlbum(e.target.value)} style={{ ...inp, ...guStyle, appearance: 'none', cursor: 'pointer' }} onFocus={onFocus} onBlur={onBlur}>
-                  <option value="" disabled>{t.albumP}</option>
-                  {ALBUMS.map(a => (
-                    <option key={a.id} value={a.id}>{isGu ? a.gu : a.en}</option>
-                  ))}
-                </select>
+                <label htmlFor="up-name" style={lbl}>{t.nameL}</label>
+                <input id="up-name" required value={name} onChange={e => setName(e.target.value)} placeholder={t.nameP} style={{ ...inp, ...guStyle }} onFocus={onFocus} onBlur={onBlur} />
               </div>
 
               {/* Caption */}
               <div>
-                <label style={lbl}>{t.captionL}</label>
-                <textarea value={caption} onChange={e => setCaption(e.target.value)} placeholder={t.captionP} rows={3} style={{ ...inp, ...guStyle, resize: 'vertical', minHeight: 76 }} onFocus={onFocus} onBlur={onBlur} />
+                <label htmlFor="up-caption" style={lbl}>{t.captionL}</label>
+                <textarea id="up-caption" value={caption} onChange={e => setCaption(e.target.value)} placeholder={t.captionP} rows={3} style={{ ...inp, ...guStyle, resize: 'vertical', minHeight: 76 }} onFocus={onFocus} onBlur={onBlur} />
               </div>
 
               {/* File drop zone */}

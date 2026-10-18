@@ -27,8 +27,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Shri Nilkanth Mahadev Maha Mahotsav — Bapupura',
-  description: 'Official website for Shri Nilkanth Mahadev Maha Mahotsav 2026, Bapupura, Ta-Mansa, Dis-Gandhinagar, Gujarat.',
+  title: 'Shree Nilkanth Mahadev Maha Mahotsav — Bapupura',
+  description: 'Official website for Shree Nilkanth Mahadev Maha Mahotsav 2026, Bapupura, Ta-Mansa, Dis-Gandhinagar, Gujarat.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

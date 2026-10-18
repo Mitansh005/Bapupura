@@ -1,29 +1,28 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
 import { D, F } from '@/app/lib/theme';
 
 // ── Countdown hook ───────────────────────────────────────────────────────────
+const START = new Date('2026-10-22T00:00:00+05:30').getTime();
+const tick = (cb: () => void) => { const id = setInterval(cb, 1000); return () => clearInterval(id); };
+
+// null on the server (avoids hydration mismatch), 'started' once the festival is on
 function useCountdown() {
-  const calc = () => {
-    const diff = new Date('2026-10-22T00:00:00+05:30').getTime() - Date.now();
-    if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0 };
-    return {
-      d: Math.floor(diff / 86400000),
-      h: Math.floor((diff % 86400000) / 3600000),
-      m: Math.floor((diff % 3600000) / 60000),
-      s: Math.floor((diff % 60000) / 1000),
-    };
+  const now = useSyncExternalStore(tick, () => Math.floor(Date.now() / 1000) * 1000, () => null);
+  if (now === null) return null;
+  const diff = START - now;
+  if (diff <= 0) return 'started' as const;
+  return {
+    d: Math.floor(diff / 86400000),
+    h: Math.floor((diff % 86400000) / 3600000),
+    m: Math.floor((diff % 3600000) / 60000),
+    s: Math.floor((diff % 60000) / 1000),
   };
-  const [t, setT] = useState(calc);
-  useEffect(() => {
-    const id = setInterval(() => setT(calc()), 1000);
-    return () => clearInterval(id);
-  }, []);
-  return t;
 }
 
 // ── Grain texture (inline SVG fractal noise, ~4% opacity) ─────────────────────
@@ -47,12 +46,19 @@ export function Hero() {
   const cd = useCountdown();
   const pad = (n: number) => String(n).padStart(2, '0');
 
-  const units = [
-    { v: cd.d, l: h.D, boxed: false },
-    { v: pad(cd.h), l: h.H, boxed: true },
-    { v: pad(cd.m), l: h.M, boxed: true },
-    { v: pad(cd.s), l: h.S, boxed: true },
-  ];
+  const units = cd && cd !== 'started'
+    ? [
+        { v: cd.d,        l: h.D },
+        { v: pad(cd.h),   l: h.H },
+        { v: pad(cd.m),   l: h.M },
+        { v: pad(cd.s),   l: h.S },
+      ]
+    : [
+        { v: '--', l: h.D },
+        { v: '--', l: h.H },
+        { v: '--', l: h.M },
+        { v: '--', l: h.S },
+      ];
 
   return (
     <section style={{
@@ -66,6 +72,18 @@ export function Hero() {
       overflow: 'hidden',
       background: `linear-gradient(180deg, ${D.duskTop} 0%, #241310 38%, ${D.duskMid} 58%, #15100C 78%, ${D.duskDeep} 100%)`,
     }}>
+      {/* ── Layer -1: real temple photograph (full-bleed background) ── */}
+      <Image
+        src="/images/hero.jpg"
+        alt="Shree Nilkanth Mahadev temple at Bapupura — Nandi statue and flower-decorated courtyard at dusk"
+        fill
+        preload
+        sizes="100vw"
+        style={{ objectFit: 'cover', objectPosition: 'center top', zIndex: 0 }}
+      />
+      {/* ── Dark overlay for text legibility over the photo ── */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0, background: 'rgba(0,0,0,0.45)', pointerEvents: 'none' }} />
+
       {/* ── Layer 0: warm horizon glow (last light behind the temple) ── */}
       <div style={{
         position: 'absolute', left: '50%', bottom: '8%', transform: 'translateX(-50%)',
@@ -114,27 +132,6 @@ export function Hero() {
             animation: `emberFloat ${e.dur} ease-in-out ${e.delay} infinite`,
           }} />
         ))}
-      </div>
-
-      {/* ── Layer 5: temple silhouette at the horizon ── */}
-      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '42%', zIndex: 1, pointerEvents: 'none' }}>
-        <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" width="100%" height="100%" style={{ display: 'block' }}>
-          {/* low temple wall / plinth */}
-          <rect x="0" y="360" width="1440" height="40" fill={D.templeFill} />
-          <rect x="430" y="334" width="580" height="66" fill={D.templeFill} />
-          {/* left flanking shikhara */}
-          <path d="M548,400 C548,300 575,250 608,250 C641,250 668,300 668,400 Z" fill={D.templeFill} />
-          {/* right flanking shikhara */}
-          <path d="M772,400 C772,300 799,250 832,250 C865,250 892,300 892,400 Z" fill={D.templeFill} />
-          {/* central spire */}
-          <path d="M655,400 C655,232 686,120 720,62 C754,120 785,232 785,400 Z" fill={D.templeFill} />
-          {/* kalash + finial */}
-          <circle cx="720" cy="54" r="9" fill={D.templeFill} />
-          <rect x="718.5" y="28" width="3" height="26" fill={D.templeFill} />
-          {/* subtle gold rim-light along the spire's leading edge */}
-          <path d="M720,62 C686,120 655,232 655,400" fill="none" stroke="rgba(200,146,42,0.22)" strokeWidth="1.2" />
-          <path d="M608,250 C575,250 548,300 548,400" fill="none" stroke="rgba(200,146,42,0.12)" strokeWidth="1" />
-        </svg>
       </div>
 
       {/* ── Layer 6: grain ── */}
@@ -211,6 +208,7 @@ export function Hero() {
         </p>
 
         {/* ── Countdown — serif numerals, hairline dividers, no boxes ── */}
+        {cd !== 'started' && (<>
         <p style={{ fontSize: 9, color: D.creamFaint, letterSpacing: '0.3em', textTransform: 'uppercase', fontFamily: F.inter, marginBottom: 'clamp(16px,2.5vw,22px)' }}>
           {h.countdownLabel}
         </p>
@@ -233,6 +231,7 @@ export function Hero() {
             </div>
           ))}
         </div>
+        </>)}
 
         {/* ── CTAs — gold fill / border-fill grow on hover ── */}
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginTop: 'clamp(38px,5vw,52px)' }}>
