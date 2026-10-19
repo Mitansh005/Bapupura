@@ -106,6 +106,10 @@ export const T = {
       address: 'Bapupura, Ta-Mansa, Dis-Gandhinagar, Gujarat',
       organizer: 'Shree Bapupura Yuva Ekta Manch',
     },
+    share: {
+      label: 'Share', copied: 'Copied!',
+      message: 'ॐ Shree Nilkanth Mahadev Maha Mahotsav 2026\nBapupura, Ta-Mansa, Dis-Gandhinagar\n\n22 – 25 October 2026\nShiv Mahapuran Katha · Cultural Programme · Live Darshan\n\nSee the full programme:\nhttps://nilkanthmahadev.com\n\n।। Har Har Mahadev ।।',
+    },
   },
   gu: {
     nav: {
@@ -211,6 +215,10 @@ export const T = {
       event: 'શ્રી નિલકંઠ મહાદેવ મહા મહોત્સવ ૨૦૨૬',
       address: 'બાપુપુરા, તા-માણસા, જિ-ગાંધીનગર, ગુજરાત',
       organizer: 'શ્રી બાપુપુરા યુવા એકતા મંચ',
+    },
+    share: {
+      label: 'શેર કરો', copied: 'કોપી થયું!',
+      message: 'ॐ શ્રી નિલકંઠ મહાદેવ મહા મહોત્સવ ૨૦૨૬\nબાપુપુરા, તા-માણસા, જિ-ગાંધીનગર\n\n૨૨ થી ૨૫ ઓક્ટોબર ૨૦૨૬\nશિવ મહાપુરાણ કથા · સાંસ્કૃતિક કાર્યક્રમ · લાઇવ દર્શન\n\nસંપૂર્ણ કાર્યક્રમ જુઓ:\nhttps://nilkanthmahadev.com\n\n।। હર હર મહાદેવ ।।',
     },
   },
 } as const;

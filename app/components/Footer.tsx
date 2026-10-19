@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
 import { C, F } from '@/app/lib/theme';
+import { ShareButton } from '@/app/components/ShareButton';
 
 const pages = [
   { href: '/', key: 'Home' },
@@ -45,6 +46,14 @@ export function Footer() {
             {labels[i]}
           </Link>
         ))}
+        <ShareButton style={{
+          background: 'none', border: 'none', padding: 0, cursor: 'pointer', gap: 5,
+          color: 'rgba(255,255,255,0.5)',
+          fontSize: isGu ? 11 : 9,
+          letterSpacing: isGu ? 0 : 2,
+          textTransform: isGu ? 'none' : 'uppercase',
+          fontFamily: isGu ? F.gujarati : F.inter,
+        }} />
       </div>
       <p style={{ fontSize: 8, color: 'rgba(255,255,255,0.3)', letterSpacing: 2, textTransform: 'uppercase', fontFamily: F.inter }}>
         {t.organizer} · {new Date().getFullYear()}

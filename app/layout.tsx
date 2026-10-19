@@ -29,6 +29,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Shree Nilkanth Mahadev Maha Mahotsav — Bapupura',
   description: 'Official website for Shree Nilkanth Mahadev Maha Mahotsav 2026, Bapupura, Ta-Mansa, Dis-Gandhinagar, Gujarat.',
+  metadataBase: new URL('https://nilkanthmahadev.com'),
+  // Preview card when the link is shared on WhatsApp etc. (keep image under ~300 KB)
+  openGraph: {
+    title: 'Shree Nilkanth Mahadev Maha Mahotsav 2026 — Bapupura',
+    description: '22 – 25 October 2026 · Shiv Mahapuran Katha · Cultural Programme · Live Darshan',
+    images: ['/images/hero.jpg'],
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

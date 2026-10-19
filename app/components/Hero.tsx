@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
+import { ShareButton } from '@/app/components/ShareButton';
 import { D, F } from '@/app/lib/theme';
 
 // ── Countdown hook ───────────────────────────────────────────────────────────
@@ -237,6 +238,7 @@ export function Hero() {
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginTop: 'clamp(38px,5vw,52px)' }}>
           <Link href="/albums" className="hero-cta hero-cta--solid">{h.cta1}</Link>
           <Link href="/darshan" className="hero-cta hero-cta--ghost">{h.cta2}</Link>
+          <ShareButton className="hero-cta hero-cta--ghost" />
         </div>
 
         {/* Mantra */}

@@ -20,7 +20,7 @@ export default function HomePage() {
   const infoItems = [
     { l: lang === 'en' ? 'Dates' : 'તારીખ', v: lang === 'en' ? '22–25 October 2026' : '૨૨–૨૫ ઓક્ટોબર ૨૦૨૬', n: lang === 'en' ? '4 Days' : '૪ દિવસ' },
     { l: lang === 'en' ? 'Evening Dhun' : 'સાંજની ધૂન', v: lang === 'en' ? 'Every Monday' : 'દર સોમવારે', n: '।। ॐ નમઃ શિવાય ।।' },
-    { l: lang === 'en' ? 'Location' : 'સ્થળ', v: lang === 'en' ? 'Nilkanth Mandir' : 'નિલકંઠ મંદિર', n: lang === 'en' ? 'Bapupura, Ta-Mansa' : 'બાપુપુરા, તા-માણસા' },
+    { l: lang === 'en' ? 'Location' : 'સ્થળ', v: lang === 'en' ? 'Nilkanth Mahadev Mandir' : 'નિલકંઠ મહાદેવ મંદિર', n: lang === 'en' ? 'Bapupura, Ta-Mansa' : 'બાપુપુરા, તા-માણસા' },
   ];
 
   return (
