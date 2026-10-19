@@ -22,6 +22,26 @@ const lbl = {
 const onFocus = (e: React.FocusEvent<HTMLElement>) => { e.target.style.borderColor = C.maroon; };
 const onBlur  = (e: React.FocusEvent<HTMLElement>) => { e.target.style.borderColor = C.bd; };
 
+// shortcut: re-encodes to JPEG ≤2560px to stretch Supabase's 1 GB free tier; remove once photos move to Oracle storage
+async function shrink(file: File): Promise<Blob> {
+  try {
+    const bmp = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    const scale = Math.min(1, 2560 / Math.max(bmp.width, bmp.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(bmp.width * scale);
+    canvas.height = Math.round(bmp.height * scale);
+    const ctx = canvas.getContext('2d')!;
+    ctx.fillStyle = '#fff'; // transparent PNGs would otherwise turn black as JPEG
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+    bmp.close();
+    const blob = await new Promise<Blob | null>(r => canvas.toBlob(r, 'image/jpeg', 0.85));
+    return blob && blob.size < file.size ? blob : file;
+  } catch {
+    return file; // old browser or undecodable image — upload the original
+  }
+}
+
 export default function UploadPage() {
   const { lang } = useLang();
   const isGu = lang === 'gu';
@@ -68,10 +88,11 @@ export default function UploadPage() {
     try {
       const eventId = ALBUMS[0].id;
       for (const file of files) {
-        const ext = EXT_FROM_MIME[file.type] ?? 'jpg';
+        const body = await shrink(file);
+        const ext = EXT_FROM_MIME[body.type] ?? 'jpg';
         const path = `${eventId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
 
-        const { error: uploadErr } = await supabase.storage.from('photos').upload(path, file);
+        const { error: uploadErr } = await supabase.storage.from('photos').upload(path, body, { contentType: body.type });
         if (uploadErr) throw uploadErr;
 
         const { data: { publicUrl } } = supabase.storage.from('photos').getPublicUrl(path);
