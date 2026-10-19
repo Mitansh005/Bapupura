@@ -9,7 +9,7 @@ import { ShareButton } from '@/app/components/ShareButton';
 import { D, F } from '@/app/lib/theme';
 
 // ── Countdown hook ───────────────────────────────────────────────────────────
-const START = new Date('2026-10-22T00:00:00+05:30').getTime();
+const START = new Date('2026-10-22T08:00:00+05:30').getTime();
 const tick = (cb: () => void) => { const id = setInterval(cb, 1000); return () => clearInterval(id); };
 
 // null on the server (avoids hydration mismatch), 'started' once the festival is on
