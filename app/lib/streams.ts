@@ -8,7 +8,7 @@ export const STREAMS = [
     start: '2026-10-21T21:20:00+05:30',
     en: 'Bhavya Dayro — Ramesh Prajapati',
     gu: 'ભવ્ય ડાયરો — રમેશ પ્રજાપતિ',
-    live: true,
+    live: false,
   },
 ];
 
