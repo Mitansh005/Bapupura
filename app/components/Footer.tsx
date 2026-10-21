@@ -9,6 +9,7 @@ import { ShareButton } from '@/app/components/ShareButton';
 const pages = [
   { href: '/', key: 'Home' },
   { href: '/darshan', key: 'Darshan' },
+  { href: '/events', key: 'Events' },
   { href: '/albums', key: 'Albums' },
   { href: '/upload', key: 'Upload' },
   { href: '/about', key: 'About' },
@@ -20,7 +21,7 @@ export function Footer() {
   const t = T[lang].footer;
   const nav = T[lang].nav;
 
-  const labels = [nav.home, nav.darshan, nav.albums, nav.upload, nav.about];
+  const labels = [nav.home, nav.darshan, nav.events, nav.albums, nav.upload, nav.about];
 
   return (
     <footer style={{ background: C.maroon, padding: '28px 24px', textAlign: 'center' }}>

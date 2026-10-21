@@ -4,9 +4,7 @@ import Image from 'next/image';
 import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
 import { C, F } from '@/app/lib/theme';
-
-// Mahotsav stream of the day — swap the ID (and eventLabel/eventSub in translations) for each new stream
-const EVENT_LIVE_ID = '9R00WHI00H4';
+import { STREAMS, fmtIST } from '@/app/lib/streams';
 
 export default function DarshanPage() {
   const { lang } = useLang();
@@ -47,7 +45,11 @@ export default function DarshanPage() {
 
           {/* YouTube embeds — today's event stream first, then the mandir camera */}
           {[
-            { id: EVENT_LIVE_ID, label: t.eventLabel, sub: t.eventSub },
+            ...STREAMS.filter(s => s.live).map(s => ({
+              id: s.id,
+              label: `🔴 ${t.eventLive} — ${isGu ? s.gu : s.en}`,
+              sub: fmtIST(s.start, lang, { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: '2-digit' }),
+            })),
             { id: 'I98t5BgGt2k', label: t.camLabel, sub: t.camSub },
           ].map(s => (
             <div key={s.id} style={{ border: `1px solid ${C.bd}`, overflow: 'hidden', marginBottom: 16 }}>

@@ -17,6 +17,7 @@ export function Navbar() {
   const items = [
     { href: '/',        label: t.home },
     { href: '/darshan', label: t.darshan },
+    { href: '/events',  label: t.events },
     { href: '/albums',  label: t.albums },
     { href: '/upload',  label: t.upload },
     { href: '/about',   label: t.about },
@@ -48,7 +49,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex" style={{ alignItems: 'center', gap: 4 }}>
+        <div className="hidden lg:flex" style={{ alignItems: 'center', gap: 4 }}>
           {items.map(({ href, label }) => (
             <Link key={href} href={href} style={{
               color: active(href) ? C.maroon : C.tx3,
@@ -78,7 +79,7 @@ export function Navbar() {
 
         {/* Hamburger — mobile only */}
         <button
-          className="flex md:hidden"
+          className="flex lg:hidden"
           onClick={() => setMob(!mob)}
           style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8 }}
           aria-label="Toggle menu"

@@ -3,7 +3,7 @@ export type Lang = 'en' | 'gu';
 export const T = {
   en: {
     nav: {
-      home: 'Home', darshan: 'Live Darshan', albums: 'Albums',
+      home: 'Home', darshan: 'Live Darshan', events: 'Past Events', albums: 'Albums',
       upload: 'Upload', about: 'About', lang: 'ગુજ',
     },
     hero: {
@@ -49,14 +49,19 @@ export const T = {
       eye: 'Sacred Live Feed',
       title: 'Shree Nilkanth Mahadev — Live Darshan',
       sub: 'Watch live from the sacred temple, anytime from anywhere in the world.',
-      eventLabel: '🔴 Mahotsav Live — Bhavya Dayro · Ramesh Prajapati',
-      eventSub: '21 October 2026 · Shree Nilkanth Mahadev Maha Mahotsav · Bapupura',
+      eventLive: 'Mahotsav Live',
       camLabel: '🔴 Shree Nilkanth Mahadev Mandir — Live Camera · Bapupura',
       camSub: '24 Hours · Bapupura, Ta-Mansa, Dis-Gandhinagar, Gujarat',
       infoTitle: 'Temple & Event Timings',
       t2l: 'Evening Dhun',   t2v: 'Every Monday',      t2n: '।। Om Namah Shivay ।।',
       t3l: 'Maha Mahotsav',  t3v: '22–25 Oct 2026',   t3n: '4 Days of Devotion',
       t4l: 'Address',        t4v: 'Bapupura, Ta-Mansa', t4n: 'Dis-Gandhinagar, Gujarat',
+    },
+    events: {
+      eye: 'Watch Again', title: 'Previous Events',
+      sub: 'Recordings of every Mahotsav programme — watch anytime, from anywhere.',
+      newest: 'Newest first', oldest: 'Oldest first', sortLabel: 'Sort events',
+      empty: 'Recordings will appear here after each programme.',
     },
     albums: {
       eye: 'Event Memories', title: 'Photo Albums',
@@ -101,7 +106,7 @@ export const T = {
   },
   gu: {
     nav: {
-      home: 'હોમ', darshan: 'લાઇવ દર્શન', albums: 'આલ્બમ',
+      home: 'હોમ', darshan: 'લાઇવ દર્શન', events: 'પાછલા કાર્યક્રમો', albums: 'આલ્બમ',
       upload: 'અપલોડ', about: 'અમારા વિશે', lang: 'English',
     },
     hero: {
@@ -147,14 +152,19 @@ export const T = {
       eye: 'લાઇવ પ્રસારણ',
       title: 'શ્રી નિલકંઠ મહાદેવ — લાઇવ દર્શન',
       sub: 'ગમે ત્યાંથી, ગમે ત્યારે — મંદિરના સીધા દર્શન.',
-      eventLabel: '🔴 મહોત્સવ લાઇવ — ભવ્ય ડાયરો · રમેશ પ્રજાપતિ',
-      eventSub: '૨૧-૧૦-૨૦૨૬ · શ્રી નિલકંઠ મહાદેવ મહા મહોત્સવ · બાપુપુરા',
+      eventLive: 'મહોત્સવ લાઇવ',
       camLabel: '🔴 શ્રી નિલકંઠ મહાદેવ મંદિર — લાઇવ કેમેરા · બાપુપુરા',
       camSub: '૨૪ કલાક · બાપુપુરા, તા-માણસા, જિ-ગાંધીનગર, ગુજરાત',
       infoTitle: 'મંદિર અને ઉત્સવ સમય',
       t2l: 'સાંજની ધૂન',     t2v: 'દર સોમવારે',          t2n: '।। ॐ નમઃ શિવાય ।।',
       t3l: 'મહા મહોત્સવ',    t3v: '૨૨–૨૫ ઓક્ટો ૨૦૨૬',  t3n: '૪ દિવસની ભક્તિ',
       t4l: 'સ્થળ',           t4v: 'બાપુપુરા, તા-માણસા',  t4n: 'જિ-ગાંધીનગર, ગુજરાત',
+    },
+    events: {
+      eye: 'ફરી જુઓ', title: 'પાછલા કાર્યક્રમો',
+      sub: 'મહોત્સવના દરેક કાર્યક્રમનું રેકોર્ડિંગ — ગમે ત્યારે, ગમે ત્યાંથી જુઓ.',
+      newest: 'નવા પહેલા', oldest: 'જૂના પહેલા', sortLabel: 'કાર્યક્રમો ગોઠવો',
+      empty: 'દરેક કાર્યક્રમ પછી તેનું રેકોર્ડિંગ અહીં દેખાશે.',
     },
     albums: {
       eye: 'ઉત્સવ સ્મૃતિ', title: 'ફોટો આલ્બમ',
