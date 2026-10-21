@@ -5,6 +5,9 @@ import { useLang } from '@/app/context/lang';
 import { T } from '@/app/lib/translations';
 import { C, F } from '@/app/lib/theme';
 
+// Mahotsav stream of the day — swap the ID (and eventLabel/eventSub in translations) for each new stream
+const EVENT_LIVE_ID = '9R00WHI00H4';
+
 export default function DarshanPage() {
   const { lang } = useLang();
   const isGu = lang === 'gu';
@@ -42,22 +45,27 @@ export default function DarshanPage() {
             {t.sub}
           </p>
 
-          {/* YouTube embed */}
-          <div style={{ border: `1px solid ${C.bd}`, overflow: 'hidden' }}>
-            <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
-              <iframe
-                src="https://www.youtube.com/embed/I98t5BgGt2k?rel=0"
-                title={t.title}
-                allowFullScreen
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
-              />
+          {/* YouTube embeds — today's event stream first, then the mandir camera */}
+          {[
+            { id: EVENT_LIVE_ID, label: t.eventLabel, sub: t.eventSub },
+            { id: 'I98t5BgGt2k', label: t.camLabel, sub: t.camSub },
+          ].map(s => (
+            <div key={s.id} style={{ border: `1px solid ${C.bd}`, overflow: 'hidden', marginBottom: 16 }}>
+              <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${s.id}?rel=0`}
+                  title={s.label}
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', display: 'block' }}
+                />
+              </div>
+              <div style={{ background: C.maroon, padding: '10px 16px' }}>
+                <div style={{ fontSize: 11, color: '#fff', fontFamily: isGu ? F.gujarati : F.inter }}>{s.label}</div>
+                <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, fontFamily: isGu ? F.gujarati : F.inter }}>{s.sub}</div>
+              </div>
             </div>
-            <div style={{ background: C.maroon, padding: '10px 16px' }}>
-              <div style={{ fontSize: 11, color: '#fff', fontFamily: isGu ? F.gujarati : F.inter }}>{t.camLabel}</div>
-              <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, fontFamily: F.inter }}>{t.camSub}</div>
-            </div>
-          </div>
+          ))}
 
           {/* Shivling darshan photograph */}
           <div className="card-lift" style={{ position: 'relative', width: '100%', aspectRatio: '16 / 10', border: `1px solid ${C.bd}`, overflow: 'hidden', marginTop: 16 }}>
