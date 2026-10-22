@@ -2,6 +2,7 @@ import type { Lang } from '@/app/lib/translations';
 
 // Mahotsav YouTube streams. New stream: add it with live: true (shows on Live Darshan).
 // When it ends: set live: false — it moves to Previous Events. `start` is always IST.
+// Live Darshan shows live streams in this list's order (Past Events sorts by date itself).
 export const STREAMS = [
   {
     id: 'uceZdpF0Kcs',
@@ -26,17 +27,17 @@ export const STREAMS = [
     live: false,
   },
   {
-    id: 'bdEB9WZd_ew',
-    start: '2026-10-22T09:00:00+05:30',
-    en: 'Maha Rudra Yagna',
-    gu: 'મહારુદ્ર યજ્ઞ',
-    live: true,
-  },
-  {
     id: 'kODOq978N-E',
     start: '2026-10-22T10:00:00+05:30',
     en: 'Shiv Mahapuran Katha — Session 1',
     gu: 'શિવ મહાપુરાણ કથા — સત્ર ૧',
+    live: true,
+  },
+  {
+    id: 'bdEB9WZd_ew',
+    start: '2026-10-22T09:00:00+05:30',
+    en: 'Maha Rudra Yagna',
+    gu: 'મહારુદ્ર યજ્ઞ',
     live: true,
   },
 ];
