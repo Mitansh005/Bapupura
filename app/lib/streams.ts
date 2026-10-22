@@ -10,6 +10,13 @@ export const STREAMS = [
     gu: 'ભવ્ય ડાયરો — રમેશ પ્રજાપતિ',
     live: false,
   },
+  {
+    id: 'g7tk25nhFbk',
+    start: '2026-10-22T08:45:00+05:30',
+    en: 'Pothi Yatra — Trusha Rami',
+    gu: 'પોથીયાત્રા — તૃષા રામી',
+    live: true,
+  },
 ];
 
 export type Stream = (typeof STREAMS)[number];
