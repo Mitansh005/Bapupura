@@ -7,6 +7,8 @@ import { STREAMS, fmtIST } from '@/app/lib/streams';
 import { C, F } from '@/app/lib/theme';
 import { SectionHeader } from '@/app/components/SectionHeader';
 
+const DAY1 = '2026-10-22'; // Maha Mahotsav runs 22–25 Oct
+
 export default function EventsPage() {
   const { lang } = useLang();
   const isGu = lang === 'gu';
@@ -16,6 +18,10 @@ export default function EventsPage() {
   // ISO strings in the same offset sort chronologically as plain strings
   const past = STREAMS.filter(s => !s.live)
     .sort((a, b) => newest ? b.start.localeCompare(a.start) : a.start.localeCompare(b.start));
+  const dayTitle = (day: string) => {
+    const n = (Date.parse(day) - Date.parse(DAY1)) / 86400000 + 1;
+    return n < 1 ? t.pre : n <= 4 ? t.day(n) : null;
+  };
   const days: { day: string; items: typeof past }[] = [];
   for (const s of past) {
     const day = s.start.slice(0, 10);
@@ -50,9 +56,16 @@ export default function EventsPage() {
 
               {days.map(({ day, items }) => (
                 <div key={day} style={{ marginBottom: 36 }}>
-                  <h2 style={{ fontFamily: isGu ? F.gujarati : F.cormorant, fontSize: isGu ? 18 : 22, color: C.maroon, fontWeight: isGu ? 700 : 600, marginBottom: 14, paddingBottom: 8, borderBottom: `1px solid ${C.bd}` }}>
-                    {fmtIST(items[0].start, lang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
-                  </h2>
+                  <div style={{ marginBottom: 14, paddingBottom: 8, borderBottom: `1px solid ${C.bd}` }}>
+                    <h2 style={{ fontFamily: isGu ? F.gujarati : F.cormorant, fontSize: isGu ? 18 : 22, color: C.maroon, fontWeight: isGu ? 700 : 600 }}>
+                      {dayTitle(day) ?? fmtIST(items[0].start, lang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+                    </h2>
+                    {dayTitle(day) && (
+                      <p style={{ fontSize: isGu ? 12 : 11, color: C.tx3, marginTop: 2, fontFamily: isGu ? F.gujarati : F.inter }}>
+                        {fmtIST(items[0].start, lang, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}
+                      </p>
+                    )}
+                  </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 420px), 1fr))', gap: 20 }}>
                     {items.map(s => (
                       <div key={s.id} style={{ border: `1px solid ${C.bd}`, overflow: 'hidden', background: C.white }}>

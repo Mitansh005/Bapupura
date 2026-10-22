@@ -62,6 +62,8 @@ export const T = {
       sub: 'Recordings of every Mahotsav programme — watch anytime, from anywhere.',
       newest: 'Newest first', oldest: 'Oldest first', sortLabel: 'Sort events',
       empty: 'Recordings will appear here after each programme.',
+      pre: 'Pre-Mahotsav Programmes',
+      day: (n: number) => `Maha Mahotsav — Day ${n}`,
     },
     albums: {
       eye: 'Event Memories', title: 'Photo Albums',
@@ -165,6 +167,8 @@ export const T = {
       sub: 'મહોત્સવના દરેક કાર્યક્રમનું રેકોર્ડિંગ — ગમે ત્યારે, ગમે ત્યાંથી જુઓ.',
       newest: 'નવા પહેલા', oldest: 'જૂના પહેલા', sortLabel: 'કાર્યક્રમો ગોઠવો',
       empty: 'દરેક કાર્યક્રમ પછી તેનું રેકોર્ડિંગ અહીં દેખાશે.',
+      pre: 'મહોત્સવ પૂર્વ કાર્યક્રમ',
+      day: (n: number) => `મહા મહોત્સવ — ${['પ્રથમ', 'દ્વિતીય', 'તૃતીય', 'ચતુર્થ'][n - 1] ?? n} દિવસ`,
     },
     albums: {
       eye: 'ઉત્સવ સ્મૃતિ', title: 'ફોટો આલ્બમ',
