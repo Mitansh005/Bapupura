@@ -23,7 +23,7 @@ export const STREAMS = [
     start: '2026-10-22T08:48:00+05:30',
     en: 'Pothi Yatra — Trusha Rami',
     gu: 'પોથીયાત્રા — તૃષા રામી',
-    live: true,
+    live: false,
   },
   {
     id: 'bdEB9WZd_ew',
