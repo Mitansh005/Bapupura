@@ -12,9 +12,23 @@ export const STREAMS = [
   },
   {
     id: 'g7tk25nhFbk',
-    start: '2026-10-22T08:45:00+05:30',
+    start: '2026-10-22T08:48:00+05:30',
     en: 'Pothi Yatra — Trusha Rami',
     gu: 'પોથીયાત્રા — તૃષા રામી',
+    live: true,
+  },
+  {
+    id: 'bdEB9WZd_ew',
+    start: '2026-10-22T09:00:00+05:30',
+    en: 'Maha Rudra Yagna',
+    gu: 'મહારુદ્ર યજ્ઞ',
+    live: true,
+  },
+  {
+    id: 'kODOq978N-E',
+    start: '2026-10-22T10:00:00+05:30',
+    en: 'Shiv Mahapuran Katha — Session 1',
+    gu: 'શિવ મહાપુરાણ કથા — સત્ર ૧',
     live: true,
   },
 ];
