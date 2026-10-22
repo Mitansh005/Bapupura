@@ -38,13 +38,20 @@ export const STREAMS = [
     start: '2026-10-22T14:48:00+05:30',
     en: 'Shiv Mahapuran Katha — Session 2',
     gu: 'શિવ મહાપુરાણ કથા — સત્ર ૨',
-    live: true,
+    live: false,
   },
   {
     id: 'bdEB9WZd_ew',
     start: '2026-10-22T09:00:00+05:30',
     en: 'Maha Rudra Yagna',
     gu: 'મહારુદ્ર યજ્ઞ',
+    live: false,
+  },
+  {
+    id: 'YPhV1oj-ngA',
+    start: '2026-10-22T21:30:00+05:30',
+    en: 'Hasya Darbar — Hiteshbhai Antala',
+    gu: 'હાસ્ય દરબાર — હિતેશભાઈ અંટાળા',
     live: true,
   },
 ];
