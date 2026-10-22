@@ -67,9 +67,11 @@ export default function EventsPage() {
                           />
                         </div>
                         <div style={{ padding: '12px 16px' }}>
-                          <div style={{ fontSize: isGu ? 11 : 9, color: C.sf, letterSpacing: isGu ? 0 : 1.5, textTransform: isGu ? 'none' : 'uppercase', fontWeight: 600, fontFamily: isGu ? F.gujarati : F.inter }}>
-                            {fmtIST(s.start, lang, { hour: 'numeric', minute: '2-digit' })}
-                          </div>
+                          {!s.noTime && (
+                            <div style={{ fontSize: isGu ? 11 : 9, color: C.sf, letterSpacing: isGu ? 0 : 1.5, textTransform: isGu ? 'none' : 'uppercase', fontWeight: 600, fontFamily: isGu ? F.gujarati : F.inter }}>
+                              {fmtIST(s.start, lang, { hour: 'numeric', minute: '2-digit' })}
+                            </div>
+                          )}
                           <div style={{ fontFamily: isGu ? F.gujarati : F.cormorant, fontSize: isGu ? 15 : 18, color: C.maroon, fontWeight: 700, marginTop: 3 }}>
                             {isGu ? s.gu : s.en}
                           </div>

@@ -4,6 +4,14 @@ import type { Lang } from '@/app/lib/translations';
 // When it ends: set live: false — it moves to Previous Events. `start` is always IST.
 export const STREAMS = [
   {
+    id: 'uceZdpF0Kcs',
+    start: '2026-10-21T00:00:00+05:30', // time unknown — sorts first in the day, time hidden
+    en: 'Deh Shuddhikaran',
+    gu: 'દેહ શુદ્ધિકરણ',
+    live: false,
+    noTime: true,
+  },
+  {
     id: '9R00WHI00H4',
     start: '2026-10-21T21:20:00+05:30',
     en: 'Bhavya Dayro — Ramesh Prajapati',
