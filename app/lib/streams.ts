@@ -31,7 +31,7 @@ export const STREAMS = [
     start: '2026-10-22T10:00:00+05:30',
     en: 'Shiv Mahapuran Katha — Session 1',
     gu: 'શિવ મહાપુરાણ કથા — સત્ર ૧',
-    live: true,
+    live: false,
   },
   {
     id: 'bdEB9WZd_ew',
