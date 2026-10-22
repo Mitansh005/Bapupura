@@ -4,6 +4,7 @@ import './globals.css';
 import { LangProvider } from '@/app/context/lang';
 import { Navbar } from '@/app/components/Navbar';
 import { Footer } from '@/app/components/Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 const cormorant = Cormorant_Garamond({
   weight: ['400', '600', '700'],
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </LangProvider>
+        <Analytics />
       </body>
     </html>
   );
