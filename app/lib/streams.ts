@@ -52,7 +52,7 @@ export const STREAMS = [
     start: '2026-10-22T21:30:00+05:30',
     en: 'Hasya Darbar — Hiteshbhai Antala',
     gu: 'હાસ્ય દરબાર — હિતેશભાઈ અંટાળા',
-    live: true,
+    live: false,
   },
 ];
 
