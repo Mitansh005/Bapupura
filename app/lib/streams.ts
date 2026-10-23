@@ -73,7 +73,7 @@ export const STREAMS = [
     start: '2026-10-23T10:00:00+05:30',
     en: 'Bhojanshala',
     gu: 'ભોજનશાળા',
-    live: true,
+    live: false,
   },
 ];
 
