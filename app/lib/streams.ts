@@ -62,6 +62,13 @@ export const STREAMS = [
     live: false,
   },
   {
+    id: 'tJOVZugsZ4s',
+    start: '2026-10-23T15:30:00+05:30',
+    en: 'Shiv Mahapuran Katha — Session 2',
+    gu: 'શિવ મહાપુરાણ કથા — સત્ર ૨',
+    live: true,
+  },
+  {
     id: 'K-O5cMo05dE',
     start: '2026-10-23T08:48:00+05:30',
     en: 'Maha Rudra Yagna',
