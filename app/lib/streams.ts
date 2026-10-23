@@ -54,6 +54,27 @@ export const STREAMS = [
     gu: 'હાસ્ય દરબાર — હિતેશભાઈ અંટાળા',
     live: false,
   },
+  {
+    id: '5e-vaff1JT8',
+    start: '2026-10-23T08:52:00+05:30',
+    en: 'Shiv Mahapuran Katha — Session 1',
+    gu: 'શિવ મહાપુરાણ કથા — સત્ર ૧',
+    live: true,
+  },
+  {
+    id: 'K-O5cMo05dE',
+    start: '2026-10-23T08:48:00+05:30',
+    en: 'Maha Rudra Yagna',
+    gu: 'મહારુદ્ર યજ્ઞ',
+    live: true,
+  },
+  {
+    id: 'X5bedIKhLLM',
+    start: '2026-10-23T10:00:00+05:30',
+    en: 'Bhojanshala',
+    gu: 'ભોજનશાળા',
+    live: true,
+  },
 ];
 
 export type Stream = (typeof STREAMS)[number];
