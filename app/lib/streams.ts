@@ -66,14 +66,14 @@ export const STREAMS = [
     start: '2026-10-23T15:30:00+05:30',
     en: 'Shiv Mahapuran Katha — Session 2',
     gu: 'શિવ મહાપુરાણ કથા — સત્ર ૨',
-    live: true,
+    live: false,
   },
   {
     id: 'K-O5cMo05dE',
     start: '2026-10-23T08:48:00+05:30',
     en: 'Maha Rudra Yagna',
     gu: 'મહારુદ્ર યજ્ઞ',
-    live: true,
+    live: false,
   },
   {
     id: 'X5bedIKhLLM',
@@ -81,6 +81,13 @@ export const STREAMS = [
     en: 'Bhojanshala',
     gu: 'ભોજનશાળા',
     live: false,
+  },
+  {
+    id: 'LlnfP46k6I0',
+    start: '2026-10-23T21:15:00+05:30',
+    en: 'Bhavya Lok Dayro — Mayabhai Ahir',
+    gu: 'ભવ્ય લોકડાયરો — માયાભાઈ આહિર',
+    live: true,
   },
 ];
 
