@@ -103,6 +103,13 @@ export const STREAMS = [
     gu: 'મહારુદ્ર યજ્ઞ',
     live: true,
   },
+  {
+    id: '0_yJNgTOBWM',
+    start: '2026-10-24T10:30:00+05:30',
+    en: 'Bhojanshala',
+    gu: 'ભોજનશાળા',
+    live: true,
+  },
 ];
 
 export type Stream = (typeof STREAMS)[number];
