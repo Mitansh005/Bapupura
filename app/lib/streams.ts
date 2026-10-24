@@ -87,6 +87,20 @@ export const STREAMS = [
     start: '2026-10-23T21:15:00+05:30',
     en: 'Bhavya Lok Dayro — Mayabhai Ahir',
     gu: 'ભવ્ય લોકડાયરો — માયાભાઈ આહિર',
+    live: false,
+  },
+  {
+    id: 'Fg2xh31Q-ew',
+    start: '2026-10-24T08:30:00+05:30',
+    en: 'Shiv Mahapuran Katha — Session 1',
+    gu: 'શિવ મહાપુરાણ કથા — સત્ર ૧',
+    live: true,
+  },
+  {
+    id: 'wKZs21HPI44',
+    start: '2026-10-24T08:00:00+05:30',
+    en: 'Maha Rudra Yagna',
+    gu: 'મહારુદ્ર યજ્ઞ',
     live: true,
   },
 ];
