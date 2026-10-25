@@ -131,6 +131,13 @@ export const STREAMS = [
     gu: 'ભવ્ય લોકડાયરો — સાંઈરામ દવે',
     live: false,
   },
+  {
+    id: 'CJR60iYHp6c',
+    start: '2026-10-25T09:00:00+05:30',
+    en: '27 Gol Chaudhari Samaj Sneh Milan — Samaj Darshan',
+    gu: '૨૭ ગોળ ચૌધરી સમાજ સ્નેહમિલન — સમાજ દર્શન',
+    live: true,
+  },
 ];
 
 export type Stream = (typeof STREAMS)[number];
