@@ -5,7 +5,7 @@ export const ALBUMS = [
     gu: 'શ્રી નિલકંઠ મહાદેવ મહા મહોત્સવ ૨૦૨૬',
     dateEn: '22–25 October 2026',
     dateGu: '૨૨–૨૫ ઓક્ટોબર ૨૦૨૬',
-    status: 'upcoming' as const,
+    status: 'recent' as 'upcoming' | 'recent' | 'past',
   },
 ];
 
