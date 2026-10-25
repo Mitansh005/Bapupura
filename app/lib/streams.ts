@@ -160,6 +160,13 @@ export const STREAMS = [
     gu: 'રાત્રી જમણવાર',
     live: false,
   },
+  {
+    id: 'N-hh4LsI5jk',
+    start: '2026-10-25T10:25:00+05:30',
+    en: 'Bhojanshala',
+    gu: 'ભોજનશાળા',
+    live: true,
+  },
 ];
 
 export type Stream = (typeof STREAMS)[number];
