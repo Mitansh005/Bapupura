@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${gujarati.variable} ${inter.variable}`}>
+    <html lang="gu" className={`${cormorant.variable} ${gujarati.variable} ${inter.variable}`}>
       <body>
         <LangProvider>
           <Navbar />
