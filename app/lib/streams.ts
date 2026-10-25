@@ -138,6 +138,28 @@ export const STREAMS = [
     gu: '૨૭ ગોળ ચૌધરી સમાજ સ્નેહમિલન — સમાજ દર્શન',
     live: true,
   },
+  {
+    id: 'EDe38ui-RHI',
+    start: '2026-10-22T19:00:00+05:30',
+    en: 'Ratri Jamanvar (Night Bhojan Prasad)',
+    gu: 'રાત્રી જમણવાર',
+    live: false,
+  },
+  {
+    id: '9yx9VVKWdA4',
+    start: '2026-10-23T17:30:00+05:30', // time unknown — placed after afternoon Katha, time hidden
+    en: 'Shiv Parvati Lagnotsav',
+    gu: 'શિવ પાર્વતી લગ્નોત્સવ',
+    live: false,
+    noTime: true,
+  },
+  {
+    id: 'JkUwJ0Di4KE',
+    start: '2026-10-23T19:00:00+05:30',
+    en: 'Ratri Jamanvar (Night Bhojan Prasad)',
+    gu: 'રાત્રી જમણવાર',
+    live: false,
+  },
 ];
 
 export type Stream = (typeof STREAMS)[number];
