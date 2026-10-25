@@ -129,7 +129,7 @@ export const STREAMS = [
     start: '2026-10-24T21:30:00+05:30',
     en: 'Bhavya Lok Dayro — Sairam Dave',
     gu: 'ભવ્ય લોકડાયરો — સાંઈરામ દવે',
-    live: true,
+    live: false,
   },
 ];
 
