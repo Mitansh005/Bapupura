@@ -136,7 +136,7 @@ export const STREAMS = [
     start: '2026-10-25T09:00:00+05:30',
     en: '27 Gol Chaudhari Samaj Sneh Milan — Samaj Darshan',
     gu: '૨૭ ગોળ ચૌધરી સમાજ સ્નેહમિલન — સમાજ દર્શન',
-    live: true,
+    live: false,
   },
   {
     id: 'EDe38ui-RHI',
@@ -165,7 +165,7 @@ export const STREAMS = [
     start: '2026-10-25T10:25:00+05:30',
     en: 'Bhojanshala',
     gu: 'ભોજનશાળા',
-    live: true,
+    live: false,
   },
 ];
 
