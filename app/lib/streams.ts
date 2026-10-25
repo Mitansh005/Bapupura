@@ -167,6 +167,13 @@ export const STREAMS = [
     gu: 'ભોજનશાળા',
     live: false,
   },
+  {
+    id: '6AOxBaXmWI8',
+    start: '2026-10-25T21:45:00+05:30',
+    en: 'Bhavya Ras-Garba — Divya Chaudhari',
+    gu: 'ભવ્ય રાસ ગરબા — દિવ્યા ચૌધરી',
+    live: true,
+  },
 ];
 
 export type Stream = (typeof STREAMS)[number];
