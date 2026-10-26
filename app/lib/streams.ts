@@ -172,7 +172,7 @@ export const STREAMS = [
     start: '2026-10-25T21:45:00+05:30',
     en: 'Bhavya Ras-Garba — Divya Chaudhari',
     gu: 'ભવ્ય રાસ ગરબા — દિવ્યા ચૌધરી',
-    live: true,
+    live: false,
   },
 ];
 
