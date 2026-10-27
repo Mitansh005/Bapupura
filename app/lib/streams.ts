@@ -5,6 +5,14 @@ import type { Lang } from '@/app/lib/translations';
 // Live Darshan shows live streams in this list's order (Past Events sorts by date itself).
 export const STREAMS = [
   {
+    id: 'VP8rJqpkzBw',
+    start: '2026-10-11T00:00:00+05:30', // date from YouTube upload (11 Oct); time unknown, hidden
+    en: 'Shree Rudra Jalabhishek (Seven Rivers)',
+    gu: 'શ્રી રુદ્ર જલાભિષેક (સાત નદીઓ)',
+    live: false,
+    noTime: true,
+  },
+  {
     id: 'uceZdpF0Kcs',
     start: '2026-10-21T00:00:00+05:30', // time unknown — sorts first in the day, time hidden
     en: 'Deh Shuddhikaran',
